@@ -1,7 +1,7 @@
 ///
-/// Polymorph by Pixelarity
-/// pixelarity.com | hello@pixelarity.com
-/// License: pixelarity.com/license
+/// Future Imperfect by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
 /* Button */
@@ -12,94 +12,73 @@
 	button,
 	.button {
 		@include vendor('appearance', 'none');
-		@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out, color #{_duration(transition)} ease-in-out');
-		border-radius: 0;
+		@include vendor('transition', (
+			'background-color #{_duration(transition)} ease',
+			'box-shadow #{_duration(transition)} ease',
+			'color #{_duration(transition)} ease'
+		));
+		background-color: transparent;
 		border: 0;
+		box-shadow: inset 0 0 0 1px _palette(border);
+		color: _palette(fg-bold) !important;
 		cursor: pointer;
 		display: inline-block;
-		font-weight: _font(weight-bold);
-		height: _size(element-height) / 0.8;
-		line-height: _size(element-height) / 0.8;
-		padding: 0 2em;
+		font-family: _font(family-heading);
+		font-size: 0.6em;
+		font-weight: _font(weight-heading-bold);
+		height: _size(element-height) * 1.75;
+		letter-spacing: _font(kerning-heading);
+		line-height: _size(element-height) * 1.75;
+		padding: 0 2.5em;
 		text-align: center;
 		text-decoration: none;
-		white-space: nowrap;
 		text-transform: uppercase;
-		font-size: 0.8em;
-		letter-spacing: _font(letter-spacing-heading);
+		white-space: nowrap;
 
-		&.icon {
-			padding-left: 1.35em;
+		&:hover {
+			box-shadow: inset 0 0 0 1px _palette(accent);
+			color: _palette(accent) !important;
 
-			&:before {
-				margin-right: 0.5em;
+			&:active {
+				background-color: transparentize(_palette(accent), 0.95);
 			}
+		}
+
+		&:before, &:after {
+			color: _palette(fg-light);
+			position: relative;
+		}
+
+		&:before {
+			left: -1em;
+			padding: 0 0 0 0.75em;
+		}
+
+		&:after {
+			left: 1em;
+			padding: 0 0.75em 0 0;
 		}
 
 		&.fit {
 			width: 100%;
 		}
 
-		&.small {
-			font-size: 0.8em;
+		&.large {
+			font-size: 0.7em;
+			padding: 0 3em;
 		}
 
-		&.large {
-			font-size: 1.35em;
+		&.small {
+			font-size: 0.5em;
 		}
 
 		&.disabled,
 		&:disabled {
 			@include vendor('pointer-events', 'none');
-			opacity: 0.25;
-		}
+			color: _palette(border) !important;
 
-		@include breakpoint('<=xsmall') {
-			padding: 0;
-		}
-	}
-
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	button {
-		line-height: (_size(element-height) / 0.8) * 0.9;
-	}
-
-	@mixin color-button($p: null) {
-		input[type="submit"],
-		input[type="reset"],
-		input[type="button"],
-		button,
-		.button {
-			background-color: transparent;
-			box-shadow: inset 0 0 0 1px _palette($p, border);
-			color: _palette($p, fg-bold) !important;
-
-			&:hover {
-				background-color: _palette($p, border-bg);
-				color: inherit !important;
-			}
-
-			&:active {
-				background-color: _palette($p, border2-bg);
-			}
-
-			&.primary {
-				box-shadow: none;
-
-				background-color: _palette($p, fg-bold);
-				color: _palette($p, bg) !important;
-
-				&:hover {
-					background-color: lighten(_palette($p, fg-bold), 5);
-				}
-
-				&:active {
-					background-color: darken(_palette($p, fg-bold), 5);
-				}
+			&:before {
+				color: _palette(border) !important;
 			}
 		}
 	}
-
-	@include color-button;

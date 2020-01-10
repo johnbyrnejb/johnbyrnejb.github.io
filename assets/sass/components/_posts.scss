@@ -1,110 +1,65 @@
 ///
-/// Polymorph by Pixelarity
-/// pixelarity.com | hello@pixelarity.com
-/// License: pixelarity.com/license
+/// Future Imperfect by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
 /* Posts */
 
-	.posts {
-		@include vendor('display', 'flex');
-		@include vendor('flex-wrap', 'wrap');
+	ul.posts {
+		list-style: none;
+		padding: 0;
 
-		> article {
-			width: (100% / 3);
-			border-style: solid;
-			border-right-width: 1px;
-			border-bottom-width: 1px;
-			padding: _size(gutter);
+		li {
+			border-top: dotted 1px _palette(border);
+			margin: (_size(element-margin) * 0.75) 0 0 0;
+			padding: (_size(element-margin) * 0.75) 0 0 0;
+
+			&:first-child {
+				border-top: 0;
+				margin-top: 0;
+				padding-top: 0;
+			}
+		}
+
+		article {
+			@include vendor('display', 'flex');
+			@include vendor('align-items', 'flex-start');
+			@include vendor('flex-direction', 'row-reverse');
 
 			.image {
-				margin: (_size(gutter) * -0.5) 0 (_size(element-margin) + (_size(gutter) * 0.5)) (_size(gutter) * -0.5);
 				display: block;
-				position: relative;
-				width: calc(100% + #{_size(gutter)});
+				margin-right: 1.5em;
+				min-width: 4em;
+				width: 4em;
 
 				img {
 					width: 100%;
 				}
 			}
 
-			> :last-child {
-				margin-bottom: 0;
+			header {
+				@include vendor('flex-grow', '1');
+				-ms-flex: 1;
+
+				h3 {
+					font-size: 0.7em;
+					margin-top: 0.125em;
+				}
+
+				.published {
+					display: block;
+					font-family: _font(family-heading);
+					font-size: 0.6em;
+					font-weight: _font(weight-heading);
+					letter-spacing: _font(kerning-heading);
+					margin: -0.625em 0 (_size(element-margin) * 0.85) 0;
+					text-transform: uppercase;
+				}
 
 				> :last-child {
 					margin-bottom: 0;
 				}
 			}
-
-			&:nth-child(3n) {
-				border-right-width: 0;
-			}
-
-			&:nth-last-child(1),
-			&:nth-last-child(2),
-			&:nth-last-child(3) {
-				border-bottom-width: 0;
-			}
-		}
-
-		@include breakpoint('<=large') {
-			> article {
-				width: 50%;
-
-				&:nth-child(2n) {
-					border-right-width: 0;
-				}
-
-				&:nth-child(3n) {
-					border-right-width: 1px;
-				}
-
-				&:nth-last-child(3) {
-					border-bottom-width: 1px;
-				}
-			}
-		}
-
-		@include breakpoint('<=medium') {
-			> article {
-				padding: _size(gutter) _size(gutter-medium);
-
-				.image {
-					margin: (_size(gutter) * -0.5) 0 (_size(element-margin) + (_size(gutter) * 0.25)) (_size(gutter-medium) * -0.5);
-					width: calc(100% + #{_size(gutter-medium)});
-				}
-			}
-		}
-
-		@include breakpoint('<=small') {
-			> article {
-				padding: _size(gutter-small) _size(gutter-small) _size(gutter-medium) _size(gutter-small);
-
-				.image {
-					margin: 0 0 _size(element-margin) 0;
-					width: 100%;
-				}
-			}
-		}
-
-		@include breakpoint('<=xsmall') {
-			> article {
-				width: 100%;
-				border-right-width: 0 !important;
-
-				&:nth-last-child(2) {
-					border-bottom-width: 1px;
-				}
-			}
 		}
 	}
-
-	@mixin color-posts($p: null) {
-		.posts {
-			> article {
-				border-color: _palette($p, border);
-			}
-		}
-	}
-
-	@include color-posts;

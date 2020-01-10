@@ -1,14 +1,16 @@
 /*
-	Polymorph by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 (function($) {
 
 	var	$window = $(window),
 		$body = $('body'),
-		$header = $('#header');
+		$menu = $('#menu'),
+		$sidebar = $('#sidebar'),
+		$main = $('#main');
 
 	// Breakpoints.
 		breakpoints({
@@ -16,8 +18,7 @@
 			large:    [ '981px',   '1280px' ],
 			medium:   [ '737px',   '980px'  ],
 			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
+			xsmall:   [ null,      '480px'  ]
 		});
 
 	// Play initial animations on page load.
@@ -27,71 +28,68 @@
 			}, 100);
 		});
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			alignment: 'center'
-		});
+	// Menu.
+		$menu
+			.appendTo($body)
+			.panel({
+				delay: 500,
+				hideOnClick: true,
+				hideOnSwipe: true,
+				resetScroll: true,
+				resetForms: true,
+				side: 'right',
+				target: $body,
+				visibleClass: 'is-menu-visible'
+			});
 
-	// Banners.
-		$('#banner > article')
-			.css('cursor', 'pointer')
-			.on('click', 'a', function(event) {
-				event.stopPropagation();
-			})
-			.on('click', function(event) {
+	// Search (header).
+		var $search = $('#search'),
+			$search_input = $search.find('input');
+
+		$body
+			.on('click', '[href="#search"]', function(event) {
 
 				event.preventDefault();
-				event.stopPropagation();
 
-				var $a = $(this).find('a');
+				// Not visible?
+					if (!$search.hasClass('visible')) {
 
-				if ($a.length > 0)
-					window.location.href = $a.attr('href');
+						// Reset form.
+							$search[0].reset();
 
-			})
-			.each(function() {
+						// Show.
+							$search.addClass('visible');
 
-				var $this = $(this),
-					$img = $this.children('img'),
-					x;
+						// Focus input.
+							$search_input.focus();
 
-				// Assign image.
-					$this.css('background-image', 'url(' + $img.attr('src') + ')');
-
-				// Set background position.
-					if (x = $img.data('position'))
-						$this.css('background-position', x);
-
-				// Hide <img>.
-					$img.hide();
+					}
 
 			});
 
-	// Off-Canvas Navigation.
+		$search_input
+			.on('keydown', function(event) {
 
-		// Navigation Panel Toggle.
-			$('<a href="#navPanel" class="navPanelToggle">Menu</a>')
-				.appendTo($header);
+				if (event.keyCode == 27)
+					$search_input.blur();
 
-		// Navigation Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-					'<a href="#navPanel" class="close"></a>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'right',
-					target: $body,
-					visibleClass: 'is-menu-visible'
-				});
+			})
+			.on('blur', function() {
+				window.setTimeout(function() {
+					$search.removeClass('visible');
+				}, 100);
+			});
+
+	// Intro.
+		var $intro = $('#intro');
+
+		// Move to main on <=large, back to sidebar on >large.
+			breakpoints.on('<=large', function() {
+				$intro.prependTo($main);
+			});
+
+			breakpoints.on('>large', function() {
+				$intro.prependTo($sidebar);
+			});
 
 })(jQuery);

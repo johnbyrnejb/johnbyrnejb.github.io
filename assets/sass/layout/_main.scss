@@ -1,36 +1,13 @@
 ///
-/// Polymorph by Pixelarity
-/// pixelarity.com | hello@pixelarity.com
-/// License: pixelarity.com/license
+/// Future Imperfect by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
 /* Main */
 
 	#main {
-		> .main {
-			border-bottom: solid 1px _palette(border);
-
-			> .inner {
-				@include padding(5em, _size(gutter));
-				max-width: _size(inner);
-				width: 100%;
-				margin: 0 auto;
-			}
-		}
-
-		@include breakpoint('<=medium') {
-			> .main {
-				> .inner {
-					@include padding(4em, _size(gutter-medium));
-				}
-			}
-		}
-
-		@include breakpoint('<=small') {
-			> .main {
-				> .inner {
-					@include padding(2em, _size(gutter-small));
-				}
-			}
-		}
+		@include vendor('flex-grow', '1');
+		-ms-flex: 1;
+		width: 100%;
 	}

@@ -4,13 +4,13 @@
 @import 'libs/vendor';
 @import 'libs/breakpoints';
 @import 'libs/html-grid';
-@import 'font-awesome.min.css';
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900,300italic,900italic');
+@import 'fontawesome-all.min.css';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900');
 
 /*
-	Polymorph by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 // Breakpoints.
@@ -20,24 +20,8 @@
 		large:    ( 981px,   1280px ),
 		medium:   ( 737px,   980px  ),
 		small:    ( 481px,   736px  ),
-		xsmall:   ( 361px,   480px  ),
-		xxsmall:  ( null,    360px  )
+		xsmall:   ( null,    480px  )
 	));
-
-// Mixins.
-
-	@mixin color($p) {
-		@include color-typography($p);
-		@include color-box($p);
-		@include color-button($p);
-		@include color-form($p);
-		@include color-list($p);
-		@include color-meta($p);
-		@include color-pagination($p);
-		@include color-section($p);
-		@include color-table($p);
-		@include color-posts($p);
-	}
 
 // Base.
 
@@ -48,6 +32,8 @@
 // Component.
 
 	@import 'components/row';
+	@import 'components/author';
+	@import 'components/blurb';
 	@import 'components/box';
 	@import 'components/button';
 	@import 'components/form';
@@ -56,16 +42,18 @@
 	@import 'components/list';
 	@import 'components/actions';
 	@import 'components/icons';
-	@import 'components/meta';
-	@import 'components/pagination';
+	@import 'components/posts';
+	@import 'components/mini-post';
+	@import 'components/post';
 	@import 'components/section';
 	@import 'components/table';
-	@import 'components/posts';
 
 // Layout.
 
 	@import 'layout/header';
-	@import 'layout/banner';
+	@import 'layout/wrapper';
 	@import 'layout/main';
+	@import 'layout/sidebar';
+	@import 'layout/intro';
 	@import 'layout/footer';
-	@import 'layout/navPanel';
+	@import 'layout/menu';

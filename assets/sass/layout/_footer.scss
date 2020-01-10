@@ -1,77 +1,26 @@
 ///
-/// Polymorph by Pixelarity
-/// pixelarity.com | hello@pixelarity.com
-/// License: pixelarity.com/license
+/// Future Imperfect by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-/* Main */
+/* Footer */
 
 	#footer {
-		> .inner {
-			@include vendor('display', 'flex');
-			max-width: _size(inner);
-			width: 100%;
-			margin: 0 auto;
-
-			> section {
-				@include padding(_size(gutter), _size(gutter));
-				-ms-flex: 1;
-				width: 100%;
-
-				&:nth-child(2n - 1) {
-					border-right: solid 1px _palette(border);
-				}
-			}
+		.icons {
+			color: _palette(fg-light);
 		}
 
-		> .copyright {
-			border-top: solid 1px _palette(border);
-			padding: _size(gutter) _size(gutter) (_size(gutter) * 2) _size(gutter);
+		.copyright {
+			color: _palette(fg-light);
+			font-family: _font(family-heading);
+			font-size: 0.5em;
+			font-weight: _font(weight-heading);
+			letter-spacing: _font(kerning-heading);
+			text-transform: uppercase;
+		}
+
+		body.single & {
 			text-align: center;
-
-			> :last-child {
-				margin-bottom: 0;
-			}
-
-			p {
-				color: _palette(fg-light);
-				font-size: 0.8em;
-			}
-		}
-
-		@include breakpoint('<=medium') {
-			> .inner {
-				> section {
-					@include padding(_size(gutter), _size(gutter-medium));
-				}
-			}
-
-			> .copyright {
-				padding: _size(gutter) _size(gutter-medium) (_size(gutter) * 2) _size(gutter-medium);
-			}
-		}
-
-		@include breakpoint('<=small') {
-			> .inner {
-				> section {
-					@include padding(_size(gutter-medium), _size(gutter-small));
-				}
-			}
-
-			> .copyright {
-				padding: _size(gutter-medium) _size(gutter-small);
-			}
-		}
-
-		@include breakpoint('<=xsmall') {
-			> .inner {
-				@include padding(_size(gutter-medium), _size(gutter-small));
-				display: block;
-
-				> section {
-					padding: 0;
-					border-left: 0 !important;
-				}
-			}
 		}
 	}
